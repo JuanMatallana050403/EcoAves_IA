@@ -1,0 +1,11 @@
+{
+  "classes": [
+    "Chrysuronia oenone",
+    "Lophornis delattrei",
+    "Picumnus steindachneri",
+    "Pteroglossus castanotis",
+    "Sicalis flaveola"
+  ],
+  "test_accuracy": 0.3333333333333333,
+  "test_images": 3
+}

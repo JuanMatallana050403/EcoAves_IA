@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^python -m py_compile scripts/prepare_splits\\.py; python scripts/prepare_splits\\.py$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

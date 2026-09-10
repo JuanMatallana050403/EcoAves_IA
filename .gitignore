@@ -1,0 +1,35 @@
+# Local environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Downloaded evidence and generated datasets
+dataset/raw/
+dataset/additional/raw/
+dataset/additional_minor/raw/
+dataset/unknown/raw/
+dataset_check/
+dataset/retry_check/
+dataset_smoke*/
+dataset_candidates_test/
+dataset/metadata/*.backup
+dataset/metadata/*.before_*
+dataset/processed/
+
+# Trained weights and generated evaluation outputs
+models/*.pt
+models/*.pth
+models/evaluation/
+
+# Local metadata that may contain sensitive coordinates or restricted media
+dataset/metadata/image_inventory.csv
+dataset/metadata/raw_gbif/
+dataset/additional/metadata/
+dataset/additional_minor/metadata/
+dataset/unknown/metadata/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
