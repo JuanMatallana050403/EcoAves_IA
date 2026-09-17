@@ -92,6 +92,55 @@ guarda `models/evaluation/classification_report.json` y
 `models/evaluation/confusion_matrix.csv`. Si faltan especies en test, aparece
 una advertencia y la evaluación debe considerarse solamente una prueba técnica.
 
+## Probar una imagen nueva
+
+Para ejecutar inferencia manual con el modelo balanceado:
+
+```powershell
+python scripts/predict_image.py "ruta/a/una/imagen.jpg" `
+	--model models/mobilenet_balanced.pt
+```
+
+El resultado incluye la predicción, confianza y las tres clases más probables.
+Si la confianza máxima es menor que `0.55`, el script devuelve `unknown` para
+evitar forzar una especie.
+
+## Recolectar audio de Xeno-canto
+
+Configura la clave fuera del código. En PowerShell, solo para la sesión actual:
+
+```powershell
+$env:XENO_CANTO_API_KEY = "TU_CLAVE_DE_XENO_CANTO"
+```
+
+Crear inventario y descargar audios A/B de Tarapoto y Lamas:
+
+```powershell
+python scripts/xenocanto_inventory.py --max-per-species 40 --max-pages 5 --download
+```
+
+Para limitar la búsqueda a especies concretas:
+
+```powershell
+python scripts/xenocanto_inventory.py `
+	--species "Chrysuronia oenone" "Lophornis delattrei" `
+	--max-per-species 40 --download
+```
+
+El inventario queda en `dataset/audio/metadata/audio_inventory.csv`. La
+descarga conserva el ID de Xeno-canto, licencia, autor, ubicación, fecha,
+calidad, hash y estado. Revisar `manual_review` antes de entrenar.
+
+## Crear espectrogramas
+
+```powershell
+python scripts/preprocess_audio.py
+```
+
+El manifiesto queda en `dataset/audio/processed/spectrogram_manifest.csv` y
+conserva `recording_id`. Las divisiones de audio deben hacerse por grabación
+original, nunca por cada segmento de cinco segundos.
+
 ## Precauciones
 
 - Conservar licencia y atribución junto con cada archivo.

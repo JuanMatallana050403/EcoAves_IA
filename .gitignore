@@ -22,6 +22,14 @@ dataset/processed/
 models/*.pt
 models/*.pth
 models/evaluation/
+models/evaluation_*/
+models/*_balanced.json
+models/*_final.json
+
+# Audio downloads and generated spectrograms
+dataset/audio/raw/
+dataset/audio/processed/
+dataset/audio/metadata/raw_xenocanto/
 
 # Local metadata that may contain sensitive coordinates or restricted media
 dataset/metadata/image_inventory.csv
